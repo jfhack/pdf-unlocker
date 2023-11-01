@@ -1,2 +1,8 @@
 *.pdf
 *.bak
+build/
+dist/
+pdf_unlocker.egg-info/
+__pycache__/
+*.py[cod]
+*$py.class

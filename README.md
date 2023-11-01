@@ -10,17 +10,17 @@ This script utilizes [pikepdf](https://pikepdf.readthedocs.io/en/latest/) to mak
 To install the necessary requirements, run the following command:
 
 ```sh
-pip install -r requirements.txt
+pip install pdf-unlocker
 ```
 
 ## Typical Usage
 
 ```sh
-./pdf-unlocker input.pdf -o output.pdf
-./pdf-unlocker input.pdf -o output.pdf --password 1234
-./pdf-unlocker input.pdf -o output.pdf --stdin-password
-echo 1234 | ./pdf-unlocker input.pdf -o output.pdf --stdin-password
-./pdf-unlocker input.pdf -b
+pdf-unlocker input.pdf -o output.pdf
+pdf-unlocker input.pdf -o output.pdf --password 1234
+pdf-unlocker input.pdf -o output.pdf --stdin-password
+echo 1234 | pdf-unlocker input.pdf -o output.pdf --stdin-password
+pdf-unlocker input.pdf -b
 ```
 
 The resulting PDF file should not have any permission restrictions, nor should it require a password for usage (the password is required only to read the source PDF)

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-from pikepdf import Pdf
+from . import unlock
 import argparse
-import shutil
 
 def main():
   example_text = (
@@ -23,22 +22,7 @@ def main():
   parser.add_argument("-o", "--output", help="output PDF file, default: output.pdf", default=None)
   parser.add_argument("-b", "--backup", help="the original file will be saved with the extension .bak, and the default output will be the original one", action="store_true")
   args = parser.parse_args()
-  dst = Pdf.new()
-  password = args.password
-  output = "output.pdf"
-  if args.backup:
-    output = args.input
-    new_input = f"{args.input}.bak"
-    shutil.move(args.input, new_input)
-    args.input = new_input
-  if args.output:
-    output = args.output
-  if args.stdin_password:
-    password = input("Warning, the password is visible if it is typed\nPassword: ")
-  with Pdf.open(args.input, password=password) as pdf:
-    for page in pdf.pages:
-      dst.pages.append(page)
-    dst.save(output)
+  unlock(args.input, args.output, args.stdin_password, args.backup, args.password)
 
 if __name__ == "__main__":
   main()
