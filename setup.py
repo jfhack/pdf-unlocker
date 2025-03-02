@@ -6,9 +6,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
   name="pdf-unlocker",
-  version="1.1",
+  version="1.2",
   packages=find_packages(),
-  scripts=['scripts/pdf-unlocker'],
+  entry_points={
+    'console_scripts': [
+      'pdf-unlocker = pdf_unlocker.__main__:main',
+    ],
+  },
   install_requires=[
     'pikepdf'
   ],
